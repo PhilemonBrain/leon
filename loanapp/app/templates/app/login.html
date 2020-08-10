@@ -5,11 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{% url 'app:home' %}" method="post" >
+    <form action="{% url 'app:login' %}" method="POST">
         {% csrf_token %}
         <input type="email" name="email" id="" placeholder="Enter Your email Address here">
         <input type="password" name="password" id="">
-        <button type="submit">Submit</button>
+        <input type="submit" value="Submit">
     </form>
 
     <h3>A Spilt here</h3>

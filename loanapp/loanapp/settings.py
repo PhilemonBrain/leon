@@ -72,8 +72,7 @@ WSGI_APPLICATION = 'loanapp.wsgi.application'
 
 AUTH_USER_MODEL = 'app.User'
 AUTHENTICATION_BACKENDS = [
-    # 'accounts.backends.ApiAuthBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    'app.backends.EmailAuthBackend',
 ]
 
 # Database
@@ -144,3 +143,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/login'
