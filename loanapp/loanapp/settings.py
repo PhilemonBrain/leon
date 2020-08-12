@@ -55,7 +55,7 @@ ROOT_URLCONF = 'loanapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,9 +71,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'loanapp.wsgi.application'
 
 AUTH_USER_MODEL = 'app.User'
-AUTHENTICATION_BACKENDS = [
-    'app.backends.EmailAuthBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#     'app.backends.EmailAuthBackend',
+# ]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -87,13 +87,28 @@ AUTHENTICATION_BACKENDS = [
 
 DATABASES = {
 
+    # 'default': {
+
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+    #     'NAME': 'postgres',
+
+    #     'USER': 'postgres',
+
+    #     'PASSWORD': 'B@thill0449qwik2',
+
+    #     'HOST': 'localhost',
+
+    #     'PORT': '5432',
+
+    # }
     'default': {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'postgres',
+        'NAME': 'leon_db2',
 
-        'USER': 'postgres',
+        'USER': 'adLeonSUser',
 
         'PASSWORD': 'B@thill0449qwik2',
 
@@ -143,4 +158,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_URL = '/login'
+LOGIN_URL = '/login/'
