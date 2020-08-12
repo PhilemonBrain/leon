@@ -14,7 +14,7 @@ class MyManager(BaseUserManager):
             email = self.normalize_email(email),
             **extra_fields,
         )
-        user.set_password = password
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
@@ -34,7 +34,7 @@ class MyManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(verbose_name='email adress', max_length=255, unique=True)
-    category = models.CharField(max_length=255, default="Client")
+    # category = models.CharField(max_length=255, default="Client")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

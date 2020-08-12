@@ -55,7 +55,7 @@ ROOT_URLCONF = 'loanapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,31 +79,27 @@ AUTH_USER_MODEL = 'app.User'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+
+    # 'default': {
+
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+    #     'NAME': 'postgres',
+
+    #     'USER': 'postgres',
+
+    #     'PASSWORD': 'B@thill0449qwik2',
+
+    #     'HOST': 'localhost',
+
+    #     'PORT': '5432',
+
+    # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# DATABASES = {
-
-#     'default': {
-
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-#         'NAME': 'postgres',
-
-#         'USER': 'postgres',
-
-#         'PASSWORD': 'B@thill0449qwik2',
-
-#         'HOST': 'localhost',
-
-#         'PORT': '5432',
-
-#     }
-
-# }
 
 
 # Password validation
@@ -143,4 +139,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_URL = '/login'
+LOGIN_URL = '/login/'

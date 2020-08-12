@@ -15,8 +15,8 @@ def login(request):
         print("in request")
         email = request.POST.get("email")
         password = request.POST.get("password")
-        user = User().objects.filter(email=email).filter(password=password)
-        print(f'after query is :{user}')
+        # user = User().objects.filter(email=email).filter(password=password)
+        # print(f'after query is :{user}')
         # print(f'email: {email}, password: {password}')
         user = auth.authenticate(email=email, password=password)
         print(user)
@@ -25,12 +25,15 @@ def login(request):
             auth.login(request, user)
             print("logged user in")
             return redirect("app:home")
+        else:
+            print("Wrong password")
     return render(request, "app/login.html")
 
 
-@login_required        
+@login_required         
 def home(request):
-    user = request.user
+    # user = request.user
+    # print(user)
     return render(request, "app/home.html")
 
 
@@ -46,16 +49,17 @@ def signup(request):
         if password == confirm_pass:
             if User().objects.filter(email=email).exists():
                 messages.info(request, 'Email Taken, Please try again')
-                return redirect('signup')
+                return redirect('app:signup')
             else:
                 user = User()(email=email)
                 user.first_name = first_name
                 user.last_name = last_name
                 user.phonenumber = phonenumber
-                user.password = password
+                user.set_password(password)
+                # user.password = password 
                 user.save()
                 print(f"user saved. Instance is :{user}")
-                return redirect('login')
+                return redirect('app:login')
         else:
             messages.error(request, 'Password mismatch')
             return redirect("app:signup")
