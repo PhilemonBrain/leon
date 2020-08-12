@@ -30,7 +30,7 @@ def login(request):
 
 @login_required        
 def home(request):
-    # user = request.user
+    user = request.user
     return render(request, "app/home.html")
 
 
