@@ -6,12 +6,15 @@ class EmailAuthBackend(BaseBackend):
 
     def authenticate(self, request, **kwargs):
         try:
-            if request.GET('next') == '/admin/' and request.POST.get("email"):
-                email = request.POST.get("email")
+            if request.GET.get('next') == '/admin/' and request.POST.get("username"):
+                print("we are here now")
+                email = request.POST.get("username")
                 password = request.POST.get("password")
                 try:
+                    print("getting here now")
                     user = User().objects.get(email=email)
-                    if user.is_super_user:
+                    print(user)
+                    if user.is_superuser:
                         print("A Super User is logging in")
                         return user
                 except User().DoesNotExist:
