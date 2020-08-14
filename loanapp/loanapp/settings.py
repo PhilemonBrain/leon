@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app',
     'staff',
     'len_admin',
+    'client',
 ]
 
 MIDDLEWARE = [
