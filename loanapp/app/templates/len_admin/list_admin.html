@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Loanapp</title>
+  </head>
+<body>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 col-sm-12 col-lg-4 col-xs-4">
+        <h1 class="text-center"><strong>All admin</strong></h1>
+        <br />
+        <table class="table table-striped">
+            {% if admins %}
+            <thead>
+              <tr>
+                <th scope="col">Admin</th>
+                <th scope="col">Date Created</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for admin in admins %}
+              <tr>
+                <td>{{ admin.user.email }}</td>
+                <td>{{ admin.added_on }}</td>
+                <!-- <td>17th May 2020</td> -->
+                <td><a href="#"><button class="primary-btn table-btn">Edit</button></a></td>
+                <td><a href="#"><button class="danger-btn table-btn">Delete</button></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            {% else %}
+              <p>No admin added yet. Click <a href="#">here</a> to add one.</p>
+            {% endif %}
+          </table>        
+      </div>
+    </div>
+  </div>
+</body>
+</html>

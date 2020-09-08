@@ -7,24 +7,21 @@ from django.contrib import messages
 
 
 def login(request):
-    print("in login")
-    print(request.POST.get("email"))
-    print(request.POST.get("password"))
-    print(request.method)
     if request.method == "POST":
-        print("in request")
         email = request.POST.get("email")
         password = request.POST.get("password")
         # user = User().objects.filter(email=email).filter(password=password)
         # print(f'after query is :{user}')
         # print(f'email: {email}, password: {password}')
         user = auth.authenticate(email=email, password=password)
-        print(user)
         if user:
-            print(f'A user is  {user.is_active}')
             auth.login(request, user)
-            print("logged user in")
-            return redirect("app:home")
+            if user.is_staff:
+                return redirect("staff:staff_dashboard_view")
+            elif user.is_admin:
+                return redirect("len_admin:dashboard")
+            else:
+                return redirect("app:home")
         else:
             print("Wrong password")
     return render(request, "app/login.html")
@@ -69,3 +66,12 @@ def signup(request):
 def logout(request):
     auth.logout(request)
     return redirect("app:login")
+
+
+
+
+
+
+
+
+
