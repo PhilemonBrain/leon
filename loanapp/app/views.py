@@ -31,7 +31,7 @@ def login(request):
 def home(request):
     # user = request.user
     # print(user)
-    return render(request, "app/home.html")
+    return render(request, "staff/staff_dashboard.html")
 
 
 def signup(request):
