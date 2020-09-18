@@ -523,30 +523,175 @@
     <!-- Activity Quick Post -->
     <section>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row align-items-center mb-5">
                 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                     <div class="row">
                         <div class="col-xl-7">
                             <h4 text-muted mb-4>Recent Customer Activities</h4>
-                            <div>
+                            <div id="accordion">
                                 <div class="card">
                                     <div class="card-header">
-                                        <button class="btn btn-block bg-secondary text-light text-left">
+                                        <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapseOne">
                                             <img src="/app/static/dp.jpg" width="50" class="mr-3 rounded">
                                             John Posted a Comment
                                         </button>
                                     </div>
+                                    <div>
+                                        <div class="collapse show" id="collapseOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur facere corrupti exercitationem quam nisi deserunt numquam nemo ipsa reiciendis rerum laudantium, sed quas, cupiditate labore enim inventore repellendus sequi possimus.
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapseTwo">
+                                            <img src="/app/static/dp.jpg" width="50" class="mr-3 rounded">
+                                            John Posted a Comment
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <div class="collapse" id="collapseTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur facere corrupti exercitationem quam nisi deserunt numquam nemo ipsa reiciendis rerum laudantium, sed quas, cupiditate labore enim inventore repellendus sequi possimus.
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapseThree">
+                                            <img src="/app/static/dp.jpg" width="50" class="mr-3 rounded">
+                                            John Posted a Comment
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <div class="collapse" id="collapseThree" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur facere corrupti exercitationem quam nisi deserunt numquam nemo ipsa reiciendis rerum laudantium, sed quas, cupiditate labore enim inventore repellendus sequi possimus.
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapseFour">
+                                            <img src="/app/static/dp.jpg" width="50" class="mr-3 rounded">
+                                            John Posted a Comment
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <div class="collapse" id="collapseFour" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur facere corrupti exercitationem quam nisi deserunt numquam nemo ipsa reiciendis rerum laudantium, sed quas, cupiditate labore enim inventore repellendus sequi possimus.
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5">
+                        <div class="col-xl-5 mt-5">
+                            <div class="card rounded">
+                                <div class="card-body">
+                                    <h5 class="text-muted text-center mb-4">Quick Status Post</h5>
+                                    <ul class="list-inline text-center py-3">
+                                        <li class="list-inline-item mr-4">
+                                            <a href="">
+                                                <i class="fa fa-pencil text-success"></i>
+                                                <span class="h6 text-muted">Status</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item mr-4">
+                                            <a href="">
+                                                <i class="fa fa-camera text-info"></i>
+                                                <span class="h6 text-muted">Photo</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="">
+                                                <i class="fa fa-map text-primary"></i>
+                                                <span class="h6 text-muted">Checkin</span>
+                                            </a>
+                                        </li>
+                                        <!-- <li class="list-inline-item">
+                                            <a href="">
+                                                <i class="fa fa-pencil text-success"></i>
+                                                <span class="h6 text-muted">Status</span>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                    <form action="">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control py-2 mb-3" placeholder="Whats Your Status">
+                                            <button type="button" class="btn btn-block text-uppercase font-weight-bold text-light bg-info py-2 mb-5">Submit</button>
+                                        </div>
+                                    </form>
 
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="card bg-light">
+                                                <i class="fa fa-calendar fa-7x text-warning d-block m-auto py-3"></i>
+                                                <div class="card-body">
+                                                    <p class="card-text text-center font-weight-bold text-uppercase">Mon May 20</p>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card bg-light">
+                                                <i class="fad fa-clock fa-7x text-danger d-block m-auto py-3"></i>
+                                                <div class="card-body">
+                                                    <p class="card-text text-center font-weight-bold text-uppercase">8pm</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-10 col-lg-10 col-md-8 ml-auto" >
+                    <div class="row border-top pt-3">
+                        <div class="col-lg-6 text-center">
+                            <ul class="list-inlie">
+                                <li class="list-inline-item mr-2">
+                                    <a href="#" class="text-dark">CodeINDark</a>
+                                </li>
+                                <li class="list-inline-item mr-2">
+                                    <a href="#" class="text-dark">About Us</a>
+                                </li>
+                                <li class="list-inline-item mr-2">
+                                    <a href="#" class="text-dark">Support US</a>
+                                </li>
+                                <li class="list-inline-item mr-2">
+                                    <a href="#" class="text-dark">CodeINDark</a>
+                                </li>
+                            </ul>                            
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <p>&copy; 2020 Copyright. Made With <i class="fas fa-heart"></i> by <span class="text-success"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- End OF FOoter -->
 
 
     <!-- End of activity quick post -->
