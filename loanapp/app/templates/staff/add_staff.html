@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <title>Loanapp</title>
+</head>
+<body>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 col-sm-12 col-lg-4 col-xs-4">
+        <h1 class="text-center"><strong>Add new staff</strong></h1>
+        <br />
+
+        <form action="." method="POST" id="sign_form">
+          {% csrf_token %}
+          <div class="text-danger">
+            {% for message in messages %} {{ message }} {% endfor %}
+          </div>
+          <!-- <div class="form-group">
+            <label for="email">USERNAME</label>
+            <input
+              name="username"
+              type="text"
+              class="form-control"
+              placeholder="Enter your Username..."
+            />
+          </div> 
+            This will be auto generated. Fname+Lname -->
+          <div class="form-group">
+            <label for="first-name">FIRST NAME</label>
+            <input
+              type="text"
+              name="firstname"
+              class="form-control"
+              placeholder="Enter your first name..." required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="last-name">LAST NAME</label>
+            <input
+              type="text"
+              name="lastname"
+              class="form-control"
+              placeholder="Enter your last name..." required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">EMAIL</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter your email adress..." required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone-number">Phone Number</label>
+            <input
+              name="phonenumber"
+              type="text"
+              class="form-control"
+              placeholder="Enter your email adress..." required 
+            />
+          </div>
+          <!-- Staff house address -->
+          <div class="form-group">
+            <label for="address">ADDRESS</label>
+            <input type="text" name="address" class="form-control" required  />
+          </div>
+          <div class="form-group">
+            <label for="password">PASSWORD</label>
+            <input type="password" name="pass1" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="password">CONFIRM PASSWORD</label>
+            <input type="password" name="pass2" class="form-control" required  />
+          </div>
+          <!-- This should be a drop down of all the available branches -->
+          <div class="form-group">
+            <label for="branch">BRANCH</label>
+            {% if branches %}
+              {% for branch in branches %}
+                <select class="form-control form-control-md" name="branch">
+                  <option value="{{ branch.id }}">{{ branch.name }}</option>
+                </select>
+              {% endfor %}
+            {% else %}
+              <select class="form-control form-control-md" name="branch">
+                <option value="1">Delta</option>
+              </select>
+            {% endif %}
+          </div>
+          <!-- <div class="form-group">
+            <label for="branch">Upload image</label>
+            <input type="text" name="branch" class="form-control" required  />
+          </div> -->
+          <div class="form-group">
+            <label for="position">POSITION</label>
+            <input type="text" name="position" class="form-control" required />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Sign up
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

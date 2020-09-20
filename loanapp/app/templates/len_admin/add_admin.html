@@ -1,30 +1,27 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Loanapp</title>
+  </head>
 <body>
   <br />
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>
       <div class="col-md-4 col-sm-12 col-lg-4 col-xs-4">
-        <h1 class="text-center"><strong>Sign Up</strong></h1>
+        <h1 class="text-center"><strong>Add new admin</strong></h1>
         <br />
 
-        <form action="{% url 'app:signup' %}" method="POST" id="sign_form">
+        <form action="{% url 'len_admin:add_admin' %}" method="POST" id="sign_form">
           {% csrf_token %}
-          <div class="text-primary">
+          <div class="text-danger">
             {% for message in messages %} {{ message }} {% endfor %}
           </div>
-          <div class="google-btn">
-            <button type="submit" class="primary-btn btn-block">
-              <img src="" /> Continue with
-              Google
-            </button>
-          </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="email">USERNAME</label>
             <input
               name="username"
@@ -32,56 +29,56 @@
               class="form-control"
               placeholder="Enter your Username..."
             />
-          </div>
+          </div> 
+            This will be auto generated. Fname+Lname -->
           <div class="form-group">
-            <label for="email">FIRST NAME</label>
+            <label for="first-name">First name</label>
             <input
               type="text"
               name="firstname"
               class="form-control"
-              placeholder="Enter your first name..."
+              placeholder="Enter your first name..." required 
             />
           </div>
           <div class="form-group">
-            <label for="pwd">LAST NAME</label>
+            <label for="last-name">Last name</label>
             <input
               type="text"
               name="lastname"
               class="form-control"
-              placeholder="Enter your last name..."
+              placeholder="Enter your first name..." required 
             />
           </div>
           <div class="form-group">
-            <label for="pwd">EMAIL</label>
+            <label for="email">Email</label>
             <input
               type="email"
               name="email"
               class="form-control"
-              placeholder="Enter your email adress..."
+              placeholder="Enter your email adress..." required 
             />
           </div>
           <div class="form-group">
-            <label for="pwd">phonenumber</label>
+            <label for="phone-number">Phone number</label>
             <input
               name="phonenumber"
               type="text"
               class="form-control"
-              placeholder="Enter your email adress..."
+              placeholder="Enter your email adress..." required 
             />
           </div>
           <div class="form-group">
-            <label for="pwd">PASSWORD</label>
-            <input type="password" name="pwd" class="form-control" />
+            <label for="password">Password</label>
+            <input type="password" name="pass1" class="form-control" required />
           </div>
           <div class="form-group">
-            <label for="pwd">CONFIRM PASSWORD</label>
-            <input type="password" name="confirmpwd" class="form-control" />
+            <label for="password">Confirm Password</label>
+            <input type="password" name="pass2" class="form-control" required  />
           </div>
-          <button type="submit" class="btn btn-block tetiary-btn">
+          <button type="submit" class="btn btn-primary">
             Sign up
           </button>
         </form>
-        <br /><br />
       </div>
     </div>
   </div>

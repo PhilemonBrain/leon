@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <title>Loanapp</title>
+</head>
+<body>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 col-sm-12 col-lg-4 col-xs-4">
+        <h1 class="text-center"><strong>Add new branch</strong></h1>
+        <br />
+
+        <form action="." method="POST" id="sign_form">
+          {% csrf_token %}
+          <div class="text-danger">
+            {% for message in messages %} {{ message }} {% endfor %}
+          </div>
+          <div class="form-group">
+            <label for="name">NAME</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control" required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">ADDRESS</label>
+            <input
+              type="text"
+              name="address"
+              class="form-control" required 
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Add Branch
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 from django.db import models
-from app.models import User, Staff
+from app.models import User
+from staff.models import Staff
 from django.utils import timezone
 
 # Create your models here.
