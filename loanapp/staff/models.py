@@ -24,6 +24,9 @@ class Staff(models.Model):
         'added_on',
     ]
 
+    def __str__(self):
+        return f'{self.user}'
+
 
 class Branch(models.Model):
     name = models.CharField(max_length=255)
@@ -34,3 +37,6 @@ class Branch(models.Model):
     readonly_fields = [
         'date_added',
     ]
+
+    def __str__(self):
+        return f'{self.name}'

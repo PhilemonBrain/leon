@@ -1,0 +1,73 @@
+{% extends 'staff/base_staff.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <!-- <div class="row"> -->
+                <div class="row pt-md-5 mt-md-3 mb-5">
+                    <div class="col-xl-12 col-12 mb-4">
+                        <h3 class="text-muted text-center mb-3">Clients</h3>
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Surname</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Loan Amount</th>
+                                <th scope="col">Loan Date</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">Last Payment</th>
+                                <!-- <th scope="col">Loan Status</th> -->
+                                <th scope="col">A-Manager</th>
+                                <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for client in page.object_list %}
+                                    <tr>>
+                                    <td>{{client.user.last_name }}</td>
+                                    <td>{{client.user.first_name }}</td>
+                                    <td>{{client.loan_amount }}</td>
+                                    <td>19-02-2020</td>
+                                    <td>{{client.loan_balance }}</td>
+                                    <td>23-08-2020</td>
+                                    <td>{{client.staff.last_name}}</td>
+                                    <td><button type="button" class="btn btn-info btn-sm">View</button></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
+
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    {% if page.has_previous %}
+                                        <li class="page-item">
+                                            <a href="?page={{ page.previous_page_number }}" class="page-link py-2 px-3">
+                                            <span>Previous</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if page.has_next %}
+                                        <li class="page-item">
+                                            <a href="?page={{ page.next_page_number }}" class="page-link py-2 px-3">
+                                            <span>Next</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

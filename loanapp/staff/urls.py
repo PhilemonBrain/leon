@@ -1,4 +1,5 @@
-from .views import test, staff_dashboard_view, add_new_branch, list_staff, add_staff, list_branch, delete_branch, delete_staff
+from .views import test, staff_dashboard_view, add_new_branch, clients, payments
+from .views import list_staff, add_staff, list_branch, delete_branch, delete_staff
 from django.urls import path, re_path
 
 app_name = 'staff'
@@ -6,6 +7,8 @@ app_name = 'staff'
 urlpatterns = [
     path("test/", test, name='test'),
     path("dashboard/", staff_dashboard_view, name='dashboard'),
+    path("clients/", clients, name='clients'),
+    path("payments/", payments, name='payments'),
     path("add_branch/", add_new_branch, name='add_branch'),
     path("add_staff/", add_staff, name='add_staff'),
     path("list_staff/", list_staff, name='list_staff'),
