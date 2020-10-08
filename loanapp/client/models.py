@@ -17,7 +17,7 @@ class Client(models.Model):
     # phone_number = models.IntegerField('Phone Number') #i dont know if this max value is in buytes or digits?
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
 
-    def __str__(self):
+    # def __str__(self):
         return f"{self.email} {self.id}"
 
 
