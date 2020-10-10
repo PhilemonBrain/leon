@@ -7,6 +7,7 @@ from app.models import User
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator
 
 # Create your views here.
 def test(request):
@@ -17,12 +18,46 @@ def test(request):
 def staff_dashboard_view(request):
     user = request.user
     loan_requests = Loans.objects.all()
-    my_clients = Client.objects.filter(staff=user)
-    all_payments = Payments.objects.all()
+    # my_clients = Client.objects.filter(staff=user)
+    all_payments = Payments.objects.all().order_by('id')
 
-    return render(request, 'staff/staff_dashboard.html', {
+    # working with multiple paginations ona a single page??
+
+    paginator = Paginator(all_payments, 2)
+    # paginator2 = Paginator(loan_requests, 2)
+    page_num = request.GET.get('page')
+    page = paginator.get_page(page_num)
+
+
+    context = {
         'loan_requests':loan_requests,
-        'my_clients':my_clients,
+        'page':page,
+        # 'my_clients':my_clients,
+        'all_payments':all_payments
+    }
+
+    return render(request, 'staff/staff_dashboard.html', context)
+
+
+@login_required
+def clients(request):
+    all_clients = Client.objects.all().order_by('id')
+
+    paginator = Paginator(all_clients, 2)
+    page_num = request.GET.get('page')
+    page = paginator.get_page(page_num)
+
+    context = {
+        'page' : page
+    }
+    
+    return render(request, 'staff/staff_clients.html', context)
+
+
+@login_required
+def payments(request):
+    all_payments = Payments.objects.all()
+    return render(request, 'staff/staff_payments.html', {
         'all_payments':all_payments
     })
 

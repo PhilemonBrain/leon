@@ -3,7 +3,51 @@ from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model as User
 from django.contrib import messages
+from client.models import Payments, Client, Loans
+from staff.models import Staff
+import datetime
 # Create your views here.
+
+
+# def apply_for_loan(request):     #profile must be complete before a loan can be applied. Loan model
+#     loan_amount = request.POST.get("loanamount")
+    #Guarantors Details
+    # Gname = request.POST.get("guarantor_name")
+    # Gaddress = request.POST.get("guarantor_address")
+    # Gphone = request.POST.get("guarantor_phone")
+    # monthly_salary = request.POST.get("salary")
+    # client = Client.objects.get(user=request.user)
+    # loan = Loans(
+    #     user = client,
+    #     loan_amount = loan_amount,
+    #     apply_date = datetime.date.today
+    #     .........etc
+    # )
+
+
+# def approve_loan(request, loan_id):
+#     loan = Loans.objects.get(id=loan_id)
+#     loan.status = "AP"
+#     staff = Staff.objects.get(user=request.user)
+#     loan.approved_by = staff
+#     loan.date_approved = datetime.date.today
+#     laon.save()
+
+
+# def complete_profile(request): #prerequisite to apply for loan. Should match the CLIENT models
+#     nationality = 
+#     pob = place of birth
+#     dob = date of birth
+#     soo = state of origin
+#     House_address = 
+#     Office_address = 
+#     client = Client(
+#         user = request.user,
+#         soo = soo,
+#         dob = dob
+#         ........etc
+#     )
+
 
 
 def login(request):
@@ -17,26 +61,34 @@ def login(request):
         if user:
             auth.login(request, user)
             if user.is_staff:
-                return redirect("staff:staff_dashboard_view")
+                print ("This is a staff")
+                return redirect("staff:dashboard")
             elif user.is_admin:
+                print ("This is an admin")
                 return redirect("len_admin:dashboard")
             else:
                 return redirect("app:home")
         else:
+            messages.success(request, "Details not correct!")
             print("Wrong password")
     return render(request, "app/login.html")
 
 
 @login_required         
 def home(request):
+    # payments = Payments.objects.all()
     # user = request.user
-    # print(user)
-    return render(request, "staff/staff_dashboard.html")
+    # email = user.email
+    # return render(request, "staff/staff_dashboard.html", {
+    #     "payments":payments
+    # })
+    return render(request, "client/client_dashboard.html")
 
 
 def signup(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        print(request.POST)
+        # username = request.POST.get('username')
         first_name = request.POST.get('firstname')
         last_name = request.POST.get('lastname')
         email = request.POST.get('email')
@@ -68,7 +120,11 @@ def logout(request):
     return redirect("app:login")
 
 
-
+@login_required
+def profile(request):
+    user = request.user
+    print(user.last_name)
+    return render(request, "client/profile.html")
 
 
 
