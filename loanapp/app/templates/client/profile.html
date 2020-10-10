@@ -1,0 +1,44 @@
+{% extends 'client/base_client.html' %} {% block content %} {% load static %}
+
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3 mb-5">
+          <div class="col-xl-12 col-sm-6 p-2">
+            <h3><b>Your bio</b></h3>
+            <div class="card card-common">
+              <div class="card-body">
+                <div class="row">
+                  <div class="bio-row">
+                    <p><span>First Name </span>: {{user.first_name}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Last Name </span>: {{user.last_name}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Date of Birth</span>: {{user.dob}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Email </span>: {{user.email}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Mobile </span>: {{user.phone}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-secondary">
+                <i class="fa fa-sync mr-3"></i>
+                <span>
+                  <button class="btn-primary">Edit profile</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

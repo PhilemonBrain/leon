@@ -61,27 +61,34 @@ def login(request):
         if user:
             auth.login(request, user)
             if user.is_staff:
+                print ("This is a staff")
                 return redirect("staff:dashboard")
             elif user.is_admin:
+                print ("This is an admin")
                 return redirect("len_admin:dashboard")
             else:
                 return redirect("app:home")
         else:
+            messages.success(request, "Details not correct!")
             print("Wrong password")
     return render(request, "app/login.html")
 
 
 @login_required         
 def home(request):
-    payments = Payments.objects.all()
-    return render(request, "staff/staff_dashboard.html", {
-        "payments":payments
-    })
+    # payments = Payments.objects.all()
+    # user = request.user
+    # email = user.email
+    # return render(request, "staff/staff_dashboard.html", {
+    #     "payments":payments
+    # })
+    return render(request, "client/client_dashboard.html")
 
 
 def signup(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        print(request.POST)
+        # username = request.POST.get('username')
         first_name = request.POST.get('firstname')
         last_name = request.POST.get('lastname')
         email = request.POST.get('email')
@@ -113,7 +120,11 @@ def logout(request):
     return redirect("app:login")
 
 
-
+@login_required
+def profile(request):
+    user = request.user
+    print(user.last_name)
+    return render(request, "client/profile.html")
 
 
 

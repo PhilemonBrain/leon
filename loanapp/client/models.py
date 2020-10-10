@@ -22,8 +22,6 @@ class Client(models.Model):
     def __str__(self):
         return f"{self.user}"
 
-
-
 class Payments(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     # pay_date = models.DateField('Date Of Payment', default=date.today)
