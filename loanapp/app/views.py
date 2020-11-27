@@ -123,11 +123,16 @@ def logout(request):
 @login_required
 def profile(request):
     user = request.user
-    print(user.last_name)
+    # print(user.last_name)
     return render(request, "client/profile.html")
 
 
 
+@login_required
+def edit_profile(request):
+    user = request.user
+    print(user.last_name)
+    return render(request, "client/edit_profile.html")
 
 
 
